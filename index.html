@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko ongky isginanda - Marketplace Makanan Hewan Terlengkap</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom Styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+            padding-top: 80px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%) !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white !important;
+        }
+        
+        .navbar-brand i {
+            color: var(--warning);
+            margin-right: 8px;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 500;
+            margin: 0 8px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        .navbar-toggler {
+            border-color: rgba(255,255,255,0.3);
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1514888286974-6d03bde4ba48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            margin-bottom: 60px;
+            border-radius: 0 0 30px 30px;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-hero {
+            background: var(--accent);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .btn-hero:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Category Cards */
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--secondary), #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .category-card h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Product Cards */
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-body {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            height: 50px;
+            overflow: hidden;
+        }
+        
+        .product-price {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .product-rating {
+            color: var(--warning);
+            margin-bottom: 15px;
+        }
+        
+        .btn-product {
+            background: var(--secondary);
+            color: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            width: 100%;
+        }
+        
+        .btn-product:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Cart Modal */
+        .cart-modal-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-modal-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-heading {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Utility Classes */
+        .page-section {
+            padding: 80px 0;
+        }
+        
+        .bg-light-section {
+            background-color: #f8f9fa;
+        }
+        
+        .shadow-soft {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .rounded-lg {
+            border-radius: 15px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section {
+                padding: 70px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            body {
+                padding-top: 70px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Cart Badge */
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        /* Search Box */
+        .search-box {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .search-box input {
+            border-radius: 50px;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .filter-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        /* Product Detail */
+        .product-detail-img {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-detail-title {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .product-detail-price {
+            color: var(--accent);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .product-detail-description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            background: #f0f0f0;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            margin: 0 10px;
+        }
+        
+        /* Cart Page */
+        .cart-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .cart-table th {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px;
+        }
+        
+        .cart-table td {
+            padding: 20px 15px;
+            vertical-align: middle;
+        }
+        
+        .cart-summary {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .summary-row.total {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            border-bottom: none;
+        }
+        
+        /* Checkout Page */
+        .checkout-form {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        
+        /* Payment Methods */
+        .payment-method {
+            border: 2px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover, .payment-method.active {
+            border-color: var(--secondary);
+            background: rgba(52, 152, 219, 0.05);
+        }
+        
+        /* Confirmation Page */
+        .confirmation-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .order-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .order-timeline:before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e0e0e0;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e0e0e0;
+        }
+        
+        .timeline-item.active:before {
+            background: var(--success);
+            box-shadow: 0 0 0 4px rgba(39, 174, 96, 0.2);
+        }
+        
+        .timeline-item.completed:before {
+            background: var(--success);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-paw"></i> Toko ongky isginanda
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#categories">Kategori</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Produk</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimoni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang Kami</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <!-- Search Box -->
+                    <div class="search-box d-none d-lg-block me-3">
+                        <input type="text" id="searchInput" placeholder="Cari produk...">
+                        <button id="searchBtn"><i class="fas fa-search"></i></button>
+                    </div>
+                    
+                    <!-- Cart Button -->
+                    <div class="position-relative me-3">
+                        <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </div>
+                    
+                    <!-- User Menu -->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="fas fa-sign-in-alt me-2"></i>Masuk</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registerModal"><i class="fas fa-user-plus me-2"></i>Daftar</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Bantuan</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-in-up">
+                    <h1>Makanan Hewan Berkualitas untuk Sahabat Setia Anda</h1>
+                    <p>Temukan berbagai pilihan makanan hewan terlengkap dengan kualitas terbaik dan harga terjangkau. Mulai dari makanan kucing, anjing, burung, hingga kelinci.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <button class="btn btn-hero" onclick="scrollToProducts()">
+                            <i class="fas fa-shopping-bag me-2"></i>Belanja Sekarang
+                        </button>
+                        <a href="#categories" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-list me-2"></i>Lihat Kategori
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         class="img-fluid rounded-lg shadow-soft" alt="Hero Image" style="max-height: 400px; width: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Kategori Produk</h2>
+                <p>Temukan makanan hewan berdasarkan kategori favorit Anda</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-3 col-sm-6">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-cat"></i>
+                        </div>
+                        <h4>Kucing</h4>
+                        <p>Makanan kering dan basah untuk semua usia kucing</p>
+                        <a href="#" class="btn btn-outline-primary" onclick="filterCategory('kucing')">Lihat Produk</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-dog"></i>
+                        </div>
+                        <h4>Anjing</h4>
+                        <p>Nutrisi lengkap untuk anjing segala ukuran</p>
+                        <a href="#" class="btn btn-outline-primary" onclick="filterCategory('anjing')">Lihat Produk</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-dove"></i>
+                        </div>
+                        <h4>Burung</h4>
+                        <p>Bijian dan pakan untuk berbagai jenis burung</p>
+                        <a href="#" class="btn btn-outline-primary" onclick="filterCategory('burung')">Lihat Produk</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-rabbit"></i>
+                        </div>
+                        <h4>Kelinci & Hamster</h4>
+                        <p>Pakan khusus untuk hewan pengerat</p>
+                        <a href="#" class="btn btn-outline-primary" onclick="filterCategory('pengerat')">Lihat Produk</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="page-section bg-light-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Produk Terpopuler</h2>
+                <p>Pilihan terbaik dari berbagai merek makanan hewan ternama</p>
+            </div>
+            
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h5 class="filter-title mb-0">Filter Produk:</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex flex-wrap gap-2 justify-content-end">
+                            <button class="btn btn-sm btn-outline-primary active" onclick="filterProducts('all')">Semua</button>
+                            <button class="btn btn-sm btn-outline-primary" onclick="filterProducts('kucing')">Kucing</button>
+                            <button class="btn btn-sm btn-outline-primary" onclick="filterProducts('anjing')">Anjing</button>
+                            <button class="btn btn-sm btn-outline-primary" onclick="filterProducts('burung')">Burung</button>
+                            <button class="btn btn-sm btn-outline-primary" onclick="filterProducts('pengerat')">Pengerat</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Grid -->
+            <div class="row g-4" id="productGrid">
+                <!-- Products will be loaded here -->
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-5">
+                <button class="btn btn-primary btn-lg" onclick="loadMoreProducts()">
+                    <i class="fas fa-plus-circle me-2"></i>Muat Lebih Banyak
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Apa Kata Pelanggan Kami</h2>
+                <p>Testimoni dari pelanggan yang telah mempercayai Tokohewan</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Kualitas produk sangat baik dan pengiriman cepat. Kucing-kucing saya sangat menyukai makanan dari Tokohewan!"
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Customer">
+                            <div>
+                                <h6>Sari Dewi</h6>
+                                <small>Pemilik 3 Kucing</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Sebagai pemilik pet shop, saya selalu puas dengan produk dan layanan dari Tokohewan. Stok selalu lengkap!"
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Customer">
+                            <div>
+                                <h6>Budi Santoso</h6>
+                                <small>Pemilik Pet Shop</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Harga kompetitif dengan kualitas terjamin. Anjing saya sehat dan aktif sejak rutin makan produk dari Tokohewan."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Customer">
+                            <div>
+                                <h6>Rina Handayani</h6>
+                                <small>Pemilik Anjing Golden</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="page-section bg-light-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Mengapa Memilih Tokohewan?</h2>
+                <p>Kami memberikan yang terbaik untuk hewan peliharaan Anda</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-3 col-sm-6 text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-shield-alt fa-3x text-primary"></i>
+                    </div>
+                    <h5>Kualitas Terjamin</h5>
+                    <p>Produk 100% original dengan kualitas terbaik</p>
+                </div>
+                <div class="col-md-3 col-sm-6 text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-shipping-fast fa-3x text-primary"></i>
+                    </div>
+                    <h5>Pengiriman Cepat</h5>
+                    <p>Pesanan diproses dalam 24 jam dan dikirim cepat</p>
+                </div>
+                <div class="col-md-3 col-sm-6 text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-headset fa-3x text-primary"></i>
+                    </div>
+                    <h5>Layanan 24/7</h5>
+                    <p>Customer service siap membantu kapan saja</p>
+                </div>
+                <div class="col-md-3 col-sm-6 text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-money-bill-wave fa-3x text-primary"></i>
+                    </div>
+                    <h5>Harga Terjangkau</h5>
+                    <p>Harga kompetitif dengan diskon menarik</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="footer-heading"><i class="fas fa-paw me-2"></i>Tokohewan</h4>
+                    <p>Menyediakan makanan hewan berkualitas untuk sahabat setia Anda sejak 2020. Komitmen kami adalah memberikan yang terbaik untuk hewan peliharaan Anda.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-heading">Tautan Cepat</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#categories">Kategori</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#testimonials">Testimoni</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-heading">Kategori Produk</h5>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="filterCategory('kucing')">Makanan Kucing</a></li>
+                        <li><a href="#" onclick="filterCategory('anjing')">Makanan Anjing</a></li>
+                        <li><a href="#" onclick="filterCategory('burung')">Makanan Burung</a></li>
+                        <li><a href="#" onclick="filterCategory('pengerat')">Makanan Pengerat</a></li>
+                        <li><a href="#" onclick="filterProducts('all')">Semua Produk</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="footer-heading">Kontak Kami</h5>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i>Jl. Merdeka No. 123, Jakarta</li>
+                        <li><i class="fas fa-phone me-2"></i>(021) 1234-5678</li>
+                        <li><i class="fas fa-envelope me-2"></i>info@tokohewan.com</li>
+                        <li><i class="fas fa-clock me-2"></i>Buka: 08:00 - 21:00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Tokohewan. Hak Cipta Dilindungi. Dibuat dengan <i class="fas fa-heart text-danger"></i> untuk hewan peliharaan Anda.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-shopping-cart me-2"></i>Keranjang Belanja</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartContent">
+                        <!-- Cart items will be loaded here -->
+                        <div class="text-center py-4">
+                            <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                            <h5>Keranjang belanja kosong</h5>
+                            <p class="text-muted">Tambahkan produk ke keranjang untuk melanjutkan belanja</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="w-100 d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-0">Total: <span id="cartTotal" class="text-primary">Rp 0</span></h5>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Lanjut Belanja</button>
+                            <button type="button" class="btn btn-primary" onclick="goToCheckout()">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Masuk ke Akun Anda</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Ingat saya</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Masuk</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p class="mb-0">Belum punya akun? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Daftar di sini</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Buat Akun Baru</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="registerName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPhone" class="form-label">Nomor Telepon</label>
+                            <input type="tel" class="form-control" id="registerPhone" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Daftar</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p class="mb-0">Sudah punya akun? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Masuk di sini</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal fade" id="productDetailModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailProductTitle">Detail Produk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="detailProductImage" src="" class="img-fluid rounded-lg product-detail-img" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="product-detail-title" id="detailProductName"></h3>
+                            <div class="product-rating mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star-half-alt text-warning"></i>
+                                <span class="ms-2">(4.5)</span>
+                            </div>
+                            <h4 class="product-detail-price" id="detailProductPrice"></h4>
+                            <p class="product-detail-description" id="detailProductDescription"></p>
+                            
+                            <div class="quantity-selector mb-4">
+                                <label class="form-label me-3">Jumlah:</label>
+                                <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                                <input type="number" class="quantity-input" id="productQuantity" value="1" min="1" max="10">
+                                <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary btn-lg" onclick="addToCartFromDetail()">
+                                    <i class="fas fa-cart-plus me-2"></i>Tambah ke Keranjang
+                                </button>
+                                <button class="btn btn-success btn-lg" onclick="buyNow()">
+                                    <i class="fas fa-bolt me-2"></i>Beli Sekarang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-cash-register me-2"></i>Checkout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="checkout-form">
+                        <h5 class="mb-4">Informasi Pengiriman</h5>
+                        <form id="checkoutForm">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Nama Lengkap *</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email *</label>
+                                    <input type="email" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Alamat Lengkap *</label>
+                                <textarea class="form-control" rows="3" required></textarea>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Kota *</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Kode Pos *</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nomor Telepon *</label>
+                                <input type="tel" class="form-control" required>
+                            </div>
+                            
+                            <h5 class="mb-4 mt-5">Metode Pembayaran</h5>
+                            <div class="mb-3">
+                                <div class="payment-method active" onclick="selectPayment('bank')">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" checked>
+                                        <label class="form-check-label" for="bankTransfer">
+                                            <i class="fas fa-university me-2"></i>Transfer Bank
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="payment-method" onclick="selectPayment('cc')">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard">
+                                        <label class="form-check-label" for="creditCard">
+                                            <i class="fas fa-credit-card me-2"></i>Kartu Kredit
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="payment-method" onclick="selectPayment('cod')">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="paymentMethod" id="cod">
+                                        <label class="form-check-label" for="cod">
+                                            <i class="fas fa-money-bill-wave me-2"></i>Cash on Delivery
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="payment-method" onclick="selectPayment('ewallet')">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="paymentMethod" id="ewallet">
+                                        <label class="form-check-label" for="ewallet">
+                                            <i class="fas fa-wallet me-2"></i>E-Wallet
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div class="cart-summary mt-4">
+                            <h5 class="mb-3">Ringkasan Pesanan</h5>
+                            <div id="checkoutSummary">
+                                <!-- Checkout summary will be loaded here -->
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total Pembayaran</span>
+                                <span id="checkoutTotalPrice">Rp 0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" form="checkoutForm" class="btn btn-primary" onclick="processOrder()">Proses Pesanan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center p-5">
+                    <div class="confirmation-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h3 class="mt-4">Pesanan Berhasil!</h3>
+                    <p class="mb-4">Terima kasih telah berbelanja di Tokohewan. Pesanan Anda telah diterima dan sedang diproses.</p>
+                    <p class="text-muted mb-4">No. Pesanan: <strong>TH-2024-00123</strong></p>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Lanjut Belanja</button>
+                        <button type="button" class="btn btn-outline-primary" onclick="printInvoice()">
+                            <i class="fas fa-print me-2"></i>Cetak Invoice
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Data produk
+        const productsData = [
+            {
+                id: 1,
+                name: "Royal Canin Kitten 2kg",
+                price: 125000,
+                category: "kucing",
+                image: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "Makanan kering khusus anak kucing usia 4-12 bulan dengan nutrisi lengkap untuk pertumbuhan optimal.",
+                stock: 15,
+                rating: 4.5
+            },
+            {
+                id: 2,
+                name: "Pro Plan Adult Dog 3kg",
+                price: 185000,
+                category: "anjing",
+                image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "Makanan anjing dewasa dengan protein tinggi untuk energi dan kesehatan optimal.",
+                stock: 8,
+                rating: 4.7
+            },
+            {
+                id: 3,
+                name: "Friskies Cat Food 1.5kg",
+                price: 85000,
+                category: "kucing",
+                image: "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80",
+                description: "Makanan kucing dewasa dengan berbagai varian rasa yang disukai kucing.",
+                stock: 20,
+                rating: 4.3
+            },
+            {
+                id: 4,
+                name: "Burung Lovebird Mix 500g",
+                price: 45000,
+                category: "burung",
+                image: "https://images.unsplash.com/photo-1519003722824-194d4455a60e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "Campuran biji-bijian berkualitas untuk lovebird dan burung kecil lainnya.",
+                stock: 25,
+                rating: 4.6
+            },
+            {
+                id: 5,
+                name: "Pedigree Adult Dog 4kg",
+                price: 95000,
+                category: "anjing",
+                image: "https://images.unsplash.com/photo-1551730458-5d59b0f64b2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "Makanan anjing dewasa dengan nutrisi lengkap untuk kesehatan dan energi.",
+                stock: 12,
+                rating: 4.4
+            },
+            {
+                id: 6,
+                name: "Whiskas Junior 1.2kg",
+                price: 75000,
+                category: "kucing",
+                image: "https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1450&q=80",
+                description: "Makanan basah untuk anak kucing dengan tekstur lembut dan rasa lezat.",
+                stock: 18,
+                rating: 4.5
+            },
+            {
+                id: 7,
+                name: "Kelinci Pellets 2kg",
+                price: 35000,
+                category: "pengerat",
+                image: "https://images.unsplash.com/photo-1452857297128-d9c29adba80b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "Pakan pelet untuk kelinci semua usia dengan kandungan serat tinggi.",
+                stock: 30,
+                rating: 4.2
+            },
+            {
+                id: 8,
+                name: "Hamster Food Mix 1kg",
+                price: 25000,
+                category: "pengerat",
+                image: "https://images.unsplash.com/photo-1504450874802-0ba2bcd9b5ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "Campuran biji dan buah untuk hamster dengan nutrisi seimbang.",
+                stock: 22,
+                rating: 4.4
+            },
+            {
+                id: 9,
+                name: "Royal Canin Adult Cat 3kg",
+                price: 150000,
+                category: "kucing",
+                image: "https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "Makanan kucing dewasa dengan formula khusus untuk kesehatan saluran kemih.",
+                stock: 10,
+                rating: 4.8
+            },
+            {
+                id: 10,
+                name: "Pro Plan Puppy 2.5kg",
+                price: 165000,
+                category: "anjing",
+                image: "https://images.unsplash.com/photo-1558788353-f76d92427f16?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "Makanan anak anjing dengan DHA untuk perkembangan otak dan penglihatan.",
+                stock: 7,
+                rating: 4.7
+            },
+            {
+                id: 11,
+                name: "Burung Kenari Mix 400g",
+                price: 35000,
+                category: "burung",
+                image: "https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1450&q=80",
+                description: "Campuran biji khusus untuk burung kenari dengan kandungan nutrisi optimal.",
+                stock: 20,
+                rating: 4.5
+            },
+            {
+                id: 12,
+                name: "Makanan Ikan Premium 500g",
+                price: 55000,
+                category: "lainnya",
+                image: "https://images.unsplash.com/photo-1522069169874-c58ec4b76fa5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1512&q=80",
+                description: "Pakan ikan berkualitas tinggi untuk berbagai jenis ikan hias.",
+                stock: 15,
+                rating: 4.6
+            }
+        ];
+
+        // Keranjang belanja
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let currentFilter = 'all';
+        let displayedProducts = 8;
+        let selectedProduct = null;
+
+        // Format Rupiah
+        function formatRupiah(angka) {
+            return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = totalItems;
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Render produk
+        function renderProducts(filter = 'all') {
+            const productGrid = document.getElementById('productGrid');
+            if (!productGrid) return;
+            
+            currentFilter = filter;
+            let filteredProducts = productsData;
+            
+            if (filter !== 'all') {
+                filteredProducts = productsData.filter(product => product.category === filter);
+            }
+            
+            // Tampilkan produk sesuai jumlah yang ditampilkan
+            const productsToShow = filteredProducts.slice(0, displayedProducts);
+            
+            productGrid.innerHTML = productsToShow.map(product => `
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="position-relative">
+                            <img src="${product.image}" class="product-img" alt="${product.name}">
+                            <span class="product-badge">${product.category}</span>
+                        </div>
+                        <div class="product-body">
+                            <h5 class="product-title">${product.name}</h5>
+                            <div class="product-rating">
+                                ${getStarRating(product.rating)}
+                                <span class="ms-1">(${product.rating})</span>
+                            </div>
+                            <h4 class="product-price">${formatRupiah(product.price)}</h4>
+                            <p class="text-muted small mb-3">Stok: ${product.stock}</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-product" onclick="addToCart(${product.id})">
+                                    <i class="fas fa-cart-plus me-2"></i>Tambah
+                                </button>
+                                <button class="btn btn-outline-primary" onclick="showProductDetail(${product.id})">
+                                    <i class="fas fa-eye me-2"></i>Detail
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Get star rating HTML
+        function getStarRating(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star text-warning"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt text-warning"></i>';
+            }
+            
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star text-warning"></i>';
+            }
+            
+            return stars;
+        }
+
+        // Filter produk
+        function filterProducts(category) {
+            currentFilter = category;
+            displayedProducts = 8;
+            
+            // Update active filter button
+            document.querySelectorAll('#products .btn-outline-primary').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            renderProducts(category);
+        }
+
+        // Filter kategori
+        function filterCategory(category) {
+            filterProducts(category);
+            scrollToProducts();
+        }
+
+        // Load more products
+        function loadMoreProducts() {
+            displayedProducts += 4;
+            renderProducts(currentFilter);
+        }
+
+        // Scroll to products
+        function scrollToProducts() {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Add to cart
+        function addToCart(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                if (existingItem.quantity < product.stock) {
+                    existingItem.quantity++;
+                    showNotification('Produk berhasil ditambahkan ke keranjang!', 'success');
+                } else {
+                    showNotification('Stok produk tidak mencukupi!', 'warning');
+                }
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1
+                });
+                showNotification('Produk berhasil ditambahkan ke keranjang!', 'success');
+            }
+            
+            updateCartCount();
+            updateCartModal();
+        }
+
+        // Add to cart from detail
+        function addToCartFromDetail() {
+            if (selectedProduct) {
+                addToCart(selectedProduct.id);
+                const modal = bootstrap.Modal.getInstance(document.getElementById('productDetailModal'));
+                modal.hide();
+            }
+        }
+
+        // Buy now
+        function buyNow() {
+            if (selectedProduct) {
+                addToCart(selectedProduct.id);
+                const detailModal = bootstrap.Modal.getInstance(document.getElementById('productDetailModal'));
+                detailModal.hide();
+                
+                // Show checkout modal
+                const checkoutModal = new bootstrap.Modal(document.getElementById('checkoutModal'));
+                checkoutModal.show();
+            }
+        }
+
+        // Show product detail
+        function showProductDetail(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if (!product) return;
+            
+            selectedProduct = product;
+            
+            document.getElementById('detailProductName').textContent = product.name;
+            document.getElementById('detailProductPrice').textContent = formatRupiah(product.price);
+            document.getElementById('detailProductDescription').textContent = product.description;
+            document.getElementById('detailProductImage').src = product.image;
+            document.getElementById('productQuantity').value = 1;
+            
+            const modal = new bootstrap.Modal(document.getElementById('productDetailModal'));
+            modal.show();
+        }
+
+        // Quantity controls
+        function increaseQuantity() {
+            const input = document.getElementById('productQuantity');
+            if (parseInt(input.value) < 10) {
+                input.value = parseInt(input.value) + 1;
+            }
+        }
+
+        function decreaseQuantity() {
+            const input = document.getElementById('productQuantity');
+            if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+
+        // Update cart modal
+        function updateCartModal() {
+            const cartContent = document.getElementById('cartContent');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartContent.innerHTML = `
+                    <div class="text-center py-4">
+                        <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                        <h5>Keranjang belanja kosong</h5>
+                        <p class="text-muted">Tambahkan produk ke keranjang untuk melanjutkan belanja</p>
+                    </div>
+                `;
+                cartTotal.textContent = 'Rp 0';
+                return;
+            }
+            
+            let total = 0;
+            cartContent.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                return `
+                    <div class="cart-modal-item">
+                        <div class="row align-items-center">
+                            <div class="col-3">
+                                <img src="${item.image}" class="img-fluid rounded" alt="${item.name}">
+                            </div>
+                            <div class="col-5">
+                                <h6 class="mb-1">${item.name}</h6>
+                                <p class="text-muted mb-0">${formatRupiah(item.price)}</p>
+                            </div>
+                            <div class="col-4">
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="updateCartItem(${item.id}, -1)">-</button>
+                                    <span class="mx-2">${item.quantity}</span>
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="updateCartItem(${item.id}, 1)">+</button>
+                                    <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeCartItem(${item.id})">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                                <p class="text-primary mb-0 mt-1">${formatRupiah(itemTotal)}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            cartTotal.textContent = formatRupiah(total);
+            
+            // Update checkout summary
+            updateCheckoutSummary();
+        }
+
+        // Update cart item
+        function updateCartItem(productId, change) {
+            const itemIndex = cart.findIndex(item => item.id === productId);
+            if (itemIndex === -1) return;
+            
+            const product = productsData.find(p => p.id === productId);
+            
+            if (change > 0) {
+                if (cart[itemIndex].quantity < product.stock) {
+                    cart[itemIndex].quantity += change;
+                } else {
+                    showNotification('Stok produk tidak mencukupi!', 'warning');
+                }
+            } else {
+                if (cart[itemIndex].quantity > 1) {
+                    cart[itemIndex].quantity += change;
+                } else {
+                    removeCartItem(productId);
+                    return;
+                }
+            }
+            
+            updateCartCount();
+            updateCartModal();
+        }
+
+        // Remove cart item
+        function removeCartItem(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCount();
+            updateCartModal();
+            showNotification('Produk dihapus dari keranjang', 'info');
+        }
+
+        // Go to checkout
+        function goToCheckout() {
+            if (cart.length === 0) {
+                showNotification('Keranjang belanja kosong!', 'warning');
+                return;
+            }
+            
+            const cartModal = bootstrap.Modal.getInstance(document.getElementById('cartModal'));
+            cartModal.hide();
+            
+            const checkoutModal = new bootstrap.Modal(document.getElementById('checkoutModal'));
+            checkoutModal.show();
+        }
+
+        // Update checkout summary
+        function updateCheckoutSummary() {
+            const checkoutSummary = document.getElementById('checkoutSummary');
+            const checkoutTotalPrice = document.getElementById('checkoutTotalPrice');
+            
+            if (!checkoutSummary) return;
+            
+            let subtotal = 0;
+            let shipping = 15000;
+            
+            checkoutSummary.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                return `
+                    <div class="summary-row">
+                        <span>${item.name} x${item.quantity}</span>
+                        <span>${formatRupiah(itemTotal)}</span>
+                    </div>
+                `;
+            }).join('');
+            
+            // Add subtotal and shipping
+            checkoutSummary.innerHTML += `
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>${formatRupiah(subtotal)}</span>
+                </div>
+                <div class="summary-row">
+                    <span>Biaya Pengiriman</span>
+                    <span>${formatRupiah(shipping)}</span>
+                </div>
+            `;
+            
+            const total = subtotal + shipping;
+            checkoutTotalPrice.textContent = formatRupiah(total);
+        }
+
+        // Select payment method
+        function selectPayment(method) {
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            document.getElementById(`${method === 'bank' ? 'bankTransfer' : 
+                                   method === 'cc' ? 'creditCard' : 
+                                   method === 'cod' ? 'cod' : 'ewallet'}`).checked = true;
+        }
+
+        // Process order
+        function processOrder() {
+            if (cart.length === 0) {
+                showNotification('Keranjang belanja kosong!', 'warning');
+                return;
+            }
+            
+            // Simulate order processing
+            showNotification('Memproses pesanan...', 'info');
+            
+            setTimeout(() => {
+                const checkoutModal = bootstrap.Modal.getInstance(document.getElementById('checkoutModal'));
+                checkoutModal.hide();
+                
+                // Clear cart
+                cart = [];
+                updateCartCount();
+                localStorage.removeItem('cart');
+                
+                // Show confirmation modal
+                const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+                confirmationModal.show();
+            }, 1500);
+        }
+
+        // Print invoice
+        function printInvoice() {
+            showNotification('Mencetak invoice...', 'info');
+            // In a real application, this would generate and print an invoice
+        }
+
+        // Show notification
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `position-fixed top-0 end-0 p-3`;
+            notification.style.zIndex = '9999';
+            
+            notification.innerHTML = `
+                <div class="toast show" role="alert">
+                    <div class="toast-header bg-${type} text-white">
+                        <strong class="me-auto">Notifikasi</strong>
+                        <button type="button" class="btn-close btn-close-white" onclick="this.parentElement.parentElement.remove()"></button>
+                    </div>
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 3000);
+        }
+
+        // Search products
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            
+            if (searchInput && searchBtn) {
+                searchBtn.addEventListener('click', performSearch);
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') performSearch();
+                });
+            }
+        }
+
+        function performSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const keyword = searchInput.value.toLowerCase().trim();
+            
+            if (!keyword) {
+                renderProducts(currentFilter);
+                return;
+            }
+            
+            const filteredProducts = productsData.filter(product => 
+                product.name.toLowerCase().includes(keyword) ||
+                product.description.toLowerCase().includes(keyword) ||
+                product.category.toLowerCase().includes(keyword)
+            );
+            
+            const productGrid = document.getElementById('productGrid');
+            if (productGrid) {
+                if (filteredProducts.length === 0) {
+                    productGrid.innerHTML = `
+                        <div class="col-12 text-center py-5">
+                            <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                            <h4>Produk tidak ditemukan</h4>
+                            <p class="text-muted">Tidak ada produk yang sesuai dengan pencarian "${keyword}"</p>
+                        </div>
+                    `;
+                } else {
+                    productGrid.innerHTML = filteredProducts.map(product => `
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="product-card">
+                                <div class="position-relative">
+                                    <img src="${product.image}" class="product-img" alt="${product.name}">
+                                    <span class="product-badge">${product.category}</span>
+                                </div>
+                                <div class="product-body">
+                                    <h5 class="product-title">${product.name}</h5>
+                                    <div class="product-rating">
+                                        ${getStarRating(product.rating)}
+                                        <span class="ms-1">(${product.rating})</span>
+                                    </div>
+                                    <h4 class="product-price">${formatRupiah(product.price)}</h4>
+                                    <p class="text-muted small mb-3">Stok: ${product.stock}</p>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-product" onclick="addToCart(${product.id})">
+                                            <i class="fas fa-cart-plus me-2"></i>Tambah
+                                        </button>
+                                        <button class="btn btn-outline-primary" onclick="showProductDetail(${product.id})">
+                                            <i class="fas fa-eye me-2"></i>Detail
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+
+        // Setup form submissions
+        function setupForms() {
+            // Login form
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showNotification('Login berhasil!', 'success');
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+                    modal.hide();
+                });
+            }
+            
+            // Register form
+            const registerForm = document.getElementById('registerForm');
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showNotification('Registrasi berhasil!', 'success');
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
+                    modal.hide();
+                });
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial render
+            renderProducts();
+            updateCartCount();
+            updateCartModal();
+            
+            // Setup event listeners
+            setupSearch();
+            setupForms();
+            setupSmoothScrolling();
+            
+            // Show welcome notification
+            setTimeout(() => {
+                showNotification('Selamat datang di Tokohewan! Temukan makanan hewan terbaik untuk sahabat Anda.', 'info');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
